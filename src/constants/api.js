@@ -4,5 +4,5 @@ export const ErrorCode = {
   NoAccess: 401,
   NotFound: 404,
   /* 5XX */
-  InternalServerError: 500,
+  InternalServerError: 500
 };

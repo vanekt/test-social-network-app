@@ -45,5 +45,5 @@ export default class {
     return fetch(this.url + '/auth/check', getOptions)
       .then(toJson)
       .catch(errorToTransport);
-  }
+  };
 }

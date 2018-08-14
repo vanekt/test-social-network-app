@@ -14,6 +14,6 @@ function* fetchUser({ api }, { payload }) {
   }
 }
 
-export default function* (ea) {
+export default function*(ea) {
   yield takeLatest(FETCH_USER_REQUEST, fetchUser, ea);
 }

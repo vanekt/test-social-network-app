@@ -3,8 +3,5 @@ import authSaga from './auth';
 import profileSaga from './profile';
 
 export default function* rootSaga(extraArguments) {
-  yield all([
-    authSaga(extraArguments),
-    profileSaga(extraArguments)
-  ]);
+  yield all([authSaga(extraArguments), profileSaga(extraArguments)]);
 }

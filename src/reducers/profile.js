@@ -16,7 +16,7 @@ export default function reducer(state = initialState, action) {
 
     case FETCH_USER_FAILURE:
       return {
-        ...initialState,
+        ...initialState
       };
 
     default:
