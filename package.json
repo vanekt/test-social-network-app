@@ -1,0 +1,42 @@
+{
+  "name": "test-social-network-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "connected-react-router": "^4.3.0",
+    "history": "^4.7.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "node-sass": "^4.9.2",
+    "prettier": "^1.13.7",
+    "react-app-rewire-css-modules": "github:codebandits/react-app-rewire-css-modules",
+    "react-app-rewired": "^1.5.2",
+    "sass-loader": "^7.0.3",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0"
+  },
+  "scripts": {
+    "format": "prettier --single-quote --write 'src/**/*.{js,jsx,json,css,scss}'",
+    "precommit": "lint-staged",
+    "start": "BROWSER=none react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css,scss}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  }
+}
