@@ -13,9 +13,11 @@ import sagas from './sagas';
 import { initUserRequest } from './actions/user';
 
 import AuthApi from './api/auth';
+import ProfileApi from './api/profile';
 
 const api = {
-  auth: new AuthApi('')
+  auth: new AuthApi(''),
+  profile: new ProfileApi('')
 };
 
 const history = createBrowserHistory();
@@ -23,6 +25,8 @@ const store = configureStore({}, history);
 store.runSaga(sagas, {
   api
 });
+
+store.dispatch(initUserRequest());
 
 render(
   <Provider store={store}>
@@ -34,5 +38,3 @@ render(
 );
 
 registerServiceWorker();
-
-store.dispatch(initUserRequest());

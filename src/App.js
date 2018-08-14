@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile/:userId" component={Profile} />
           <Route path="/messages" component={MessagesSecure} />
           <Route component={PageNotFound} />
         </Switch>

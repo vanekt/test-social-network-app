@@ -36,9 +36,7 @@ function* login({ api }, { payload }) {
   }
 }
 
-function* userSaga(ea) {
+export default function* (ea) {
   yield takeLatest(INIT_REQUEST, initUser, ea);
   yield takeLatest(LOGIN_REQUEST, login, ea);
 }
-
-export default userSaga;
