@@ -40,4 +40,10 @@ export default class {
       .then(toJson)
       .catch(errorToTransport);
   };
+
+  checkAuth = () => {
+    return fetch(this.url + '/auth/check', getOptions)
+      .then(toJson)
+      .catch(errorToTransport);
+  }
 }

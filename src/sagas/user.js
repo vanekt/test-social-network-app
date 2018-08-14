@@ -8,13 +8,14 @@ import {
   LOGIN_FAILURE
 } from '../constants/user';
 
-// const delay = ms => new Promise(res => setTimeout(res, ms));
-
-function* initUser() {
+function* initUser({ api }) {
   try {
-    // yield delay(3000);
+    const resp = yield call(api.auth.checkAuth);
+    if (!resp.success) {
+      throw resp.error ? resp.error : new Error('user is unauthorized');
+    }
 
-    yield put({ type: INIT_SUCCESS });
+    yield put({ type: INIT_SUCCESS, payload: resp.payload });
   } catch (e) {
     yield put({ type: INIT_FAILURE });
   }
