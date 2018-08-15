@@ -5,7 +5,10 @@ import {
   INIT_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE
 } from '../constants/user';
 
 function* initUser({ api }) {
@@ -35,7 +38,17 @@ function* login({ api }, { payload }) {
   }
 }
 
+function* logout({ api }, { payload }) {
+  try {
+    const resp = yield call(api.auth.logout);
+    yield put({ type: LOGOUT_SUCCESS });
+  } catch (e) {
+    yield put({ type: LOGOUT_FAILURE, payload: e.message });
+  }
+}
+
 export default function*(ea) {
   yield takeLatest(INIT_REQUEST, initUser, ea);
   yield takeLatest(LOGIN_REQUEST, login, ea);
+  yield takeLatest(LOGOUT_REQUEST, logout, ea);
 }

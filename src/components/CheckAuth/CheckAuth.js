@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
-import { loginRequest } from '../../../actions/user';
+import { loginRequest } from '../../actions/user';
 
 const mapStateToProps = store => ({
   isInit: store.user.isInit,

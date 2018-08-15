@@ -1,4 +1,4 @@
-import { INIT_FAILURE, INIT_SUCCESS, LOGIN_SUCCESS, LOGIN_FAILURE } from '../constants/user';
+import { INIT_FAILURE, INIT_SUCCESS, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../constants/user';
 
 const initialState = {
   isInit: false,
@@ -33,6 +33,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         loginFormError: action.payload
+      };
+
+    case LOGOUT_SUCCESS:
+      return {
+        ...initialState,
+        isInit: true
       };
 
     default:
