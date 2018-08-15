@@ -1,9 +1,16 @@
-import { INIT_FAILURE, INIT_SUCCESS, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS } from '../constants/user';
+import {
+  INIT_FAILURE,
+  INIT_SUCCESS,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_SUCCESS
+} from '../constants/user';
 
 const initialState = {
   isInit: false,
-  userId: null,
-  username: '',
+  id: null,
+  name: '',
+  image: '',
   loginFormError: ''
 };
 
@@ -15,8 +22,9 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isInit: true,
-        userId: action.payload.id,
-        username: action.payload.fullname
+        id: action.payload.id,
+        name: action.payload.fullname,
+        image: action.payload.image
       };
 
     case INIT_FAILURE:

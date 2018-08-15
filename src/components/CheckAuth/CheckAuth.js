@@ -5,7 +5,7 @@ import { loginRequest } from '../../actions/user';
 
 const mapStateToProps = store => ({
   isInit: store.user.isInit,
-  userId: store.user.userId,
+  userId: store.user.id,
   loginFormError: store.user.loginFormError
 });
 

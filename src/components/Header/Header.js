@@ -1,16 +1,14 @@
 import React from 'react';
 
-export default ({ userId, username, logout }) => {
+export default ({ avatar, userId, username, logout }) => {
   const userArea = userId ? (
     <div>
-      <span>{username}</span>
-      <button type="button" onClick={logout}>Exit</button>
+      <img src={avatar} title={username} alt={username} />
+      <button type="button" onClick={logout}>
+        Exit
+      </button>
     </div>
   ) : null;
 
-  return (
-    <div>
-      {userArea}
-    </div>
-  );
+  return <div>{userArea}</div>;
 };
