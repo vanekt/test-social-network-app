@@ -25,14 +25,13 @@ function* login({ api }, { payload }) {
   try {
     const resp = yield call(api.auth.login, payload.username, payload.password);
     if (!resp.success) {
-      // TODO check resp code
-      throw new Error(resp);
+      throw new Error('User not found');
     }
 
     yield put({ type: LOGIN_SUCCESS });
     yield put({ type: INIT_REQUEST });
   } catch (e) {
-    yield put({ type: LOGIN_FAILURE, message: e.message });
+    yield put({ type: LOGIN_FAILURE, payload: e.message });
   }
 }
 

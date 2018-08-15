@@ -2,10 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { lifecycle } from 'recompose';
 
-const Profile = ({ user }) => {
+const Profile = ({ profile }) => {
   return (
     <div>
-      {user.username}
+      {profile.username}
       <NavLink
         to="/messages"
         activeStyle={{
