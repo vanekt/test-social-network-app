@@ -40,7 +40,7 @@ function* login({ api }, { payload }) {
 
 function* logout({ api }, { payload }) {
   try {
-    const resp = yield call(api.auth.logout);
+    yield call(api.auth.logout);
     yield put({ type: LOGOUT_SUCCESS });
   } catch (e) {
     yield put({ type: LOGOUT_FAILURE, payload: e.message });

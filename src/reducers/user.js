@@ -3,6 +3,7 @@ import { INIT_FAILURE, INIT_SUCCESS, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCES
 const initialState = {
   isInit: false,
   userId: null,
+  username: '',
   loginFormError: ''
 };
 
@@ -14,7 +15,8 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isInit: true,
-        userId: action.payload
+        userId: action.payload.id,
+        username: action.payload.fullname
       };
 
     case INIT_FAILURE:
