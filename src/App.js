@@ -20,7 +20,7 @@ class App extends Component {
           <Route path="/" exact component={MainSecure} />
           <Route path="/profile/" exact component={MainSecure} />
           <Route path="/profile/:userId" component={Profile} />
-          <Route path="/messages" component={MessagesSecure} />
+          <Route path="/messages/:peerId?" component={MessagesSecure} />
           <Route component={PageNotFound} />
         </Switch>
       </div>

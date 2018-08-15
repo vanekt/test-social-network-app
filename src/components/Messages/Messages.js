@@ -1,17 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
-export default () => (
+export default ({ match }) => (
   <div>
-    Messages page
-    <NavLink
-      to="/profile"
-      activeStyle={{
-        textDecoration: 'none',
-        color: 'black'
-      }}
-    >
-      To profile
-    </NavLink>
+    { match.params.peerId ? 'TODO Dialog page component' : 'TODO Dialog list component'}
   </div>
 );

@@ -22,7 +22,8 @@ export default Component => {
     password,
     updatePassword,
     submitLoginForm,
-    loginFormError
+    loginFormError,
+    ...props
   }) => {
     if (!isInit) {
       return 'Loading...'; // TODO use spinner
@@ -53,7 +54,7 @@ export default Component => {
       );
     }
 
-    return <Component />;
+    return <Component { ...props } />;
   };
 
   const enhance = compose(
