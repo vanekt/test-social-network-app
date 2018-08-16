@@ -5,7 +5,8 @@ import { fetchDialogs } from '../../actions/messages';
 const mapStateToProps = state => ({
   userId: state.user.id,
   dialogs: state.messages.dialogs,
-  dialogListError: state.messages.dialogListError
+  dialogListError: state.messages.dialogListError,
+  isLoadDialogs: state.messages.isLoadDialogs
 });
 
 const mapDispatchToProps = dispatch => {
