@@ -10,4 +10,10 @@ export default class {
       .then(toJson)
       .catch(errorToTransport);
   };
+
+  getDialogMessages = (userId, peerId) => {
+    return fetch(`${this.url}/messages/${userId}/${peerId}`, getOptions)
+      .then(toJson)
+      .catch(errorToTransport);
+  };
 }
