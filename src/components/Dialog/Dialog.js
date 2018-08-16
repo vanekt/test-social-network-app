@@ -2,14 +2,16 @@ import React from 'react';
 import { lifecycle } from 'recompose';
 import { NavLink } from 'react-router-dom';
 import Message from '../Message';
+import MessageForm from '../MessageForm';
 
 const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
   const messagesList = isLoadMessages ? (
     'Loading...'
   ) : (
-    messages.map(message => (
-      <Message key={message.id} data={message} />
-    ))
+    <div>
+      {messages && messages.map(message => <Message key={message.id} data={message} />)}
+      <MessageForm />
+    </div>
   );
 
   return (
@@ -18,7 +20,7 @@ const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
       <p>{messagesListError}</p>
       {messagesList}
     </div>
-  )
+  );
 };
 
 export default lifecycle({

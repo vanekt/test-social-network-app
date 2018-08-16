@@ -30,10 +30,15 @@ function* fetchDialogMessages({ api }, { payload }) {
 
     const peerUserResp = yield call(api.profile.getUserById, payload.peerId);
     if (!peerUserResp.success) {
-      throw peerUserResp.error ? peerUserResp.error : new Error('Cannot get peer user data by peerId');
+      throw peerUserResp.error
+        ? peerUserResp.error
+        : new Error('Cannot get peer user data by peerId');
     }
 
-    yield put({ type: FETCH_DIALOG_MESSAGES_SUCCESS, payload: { messages: resp.payload, peerUserData: peerUserResp.payload } });
+    yield put({
+      type: FETCH_DIALOG_MESSAGES_SUCCESS,
+      payload: { messages: resp.payload, peerUserData: peerUserResp.payload }
+    });
   } catch (e) {
     yield put({ type: FETCH_DIALOG_MESSAGES_FAILURE });
   }
