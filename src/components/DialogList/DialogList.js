@@ -6,8 +6,9 @@ const DialogList = ({ dialogs, dialogListError }) => (
   <div>
     <span>{dialogListError}</span>
     {dialogs.map(dialog => (
-      <NavLink key={dialog} to={`/messages/${dialog}`}>
-        <div>{`${dialog}`}</div>
+      <NavLink key={dialog.peerId} to={`/messages/${dialog.peerId}`}>
+        <img src={dialog.image} alt={dialog.username} title={dialog.username} />
+        <div>{dialog.username}</div>
       </NavLink>
     ))}
   </div>
