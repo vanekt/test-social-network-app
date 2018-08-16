@@ -1,4 +1,5 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 import {
   INIT_REQUEST,
   INIT_SUCCESS,
@@ -42,6 +43,7 @@ function* logout({ api }, { payload }) {
   try {
     yield call(api.auth.logout);
     yield put({ type: LOGOUT_SUCCESS });
+    yield put(push('/'));
   } catch (e) {
     yield put({ type: LOGOUT_FAILURE, payload: e.message });
   }

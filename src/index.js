@@ -14,10 +14,12 @@ import { initUserRequest } from './actions/user';
 
 import AuthApi from './api/auth';
 import ProfileApi from './api/profile';
+import MessagesApi from './api/messages';
 
 const api = {
   auth: new AuthApi(''),
-  profile: new ProfileApi('')
+  profile: new ProfileApi(''),
+  messages: new MessagesApi('')
 };
 
 const history = createBrowserHistory();

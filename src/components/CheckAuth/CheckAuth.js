@@ -54,7 +54,7 @@ export default Component => {
       );
     }
 
-    return <Component { ...props } />;
+    return <Component {...props} />;
   };
 
   const enhance = compose(
