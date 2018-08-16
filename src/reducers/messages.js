@@ -6,7 +6,8 @@ const initialState = {
   dialogListError: '',
   messages: [],
   isLoadMessages: false, // TODO use
-  messagesListError: ''
+  messagesListError: '',
+  peerUserData: {}
 };
 
 Object.freeze(initialState);
@@ -43,8 +44,9 @@ export default function reducer(state = initialState, action) {
     case FETCH_DIALOG_MESSAGES_SUCCESS:
       return {
         ...state,
-        messages: action.payload,
+        messages: action.payload.messages,
         messagesListError: '',
+        peerUserData: action.payload.peerUserData,
         isLoadMessages: false
       };
 

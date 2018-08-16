@@ -1,8 +1,9 @@
 import React from "react";
 
-const Message = ({ data }) => (
+const Message = ({ data, authorName, authorImage }) => (
   <div>
-    <div>{data.text}</div>
+    <div>{authorImage}</div>
+    <div>{authorName} : {data.text} ({data.datetime})</div>
   </div>
 );
 
