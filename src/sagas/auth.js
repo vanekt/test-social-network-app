@@ -11,6 +11,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE
 } from '../constants/user';
+import { connectWS, disconnectWS } from "../actions/websocket";
 
 function* initUser({ api }) {
   try {
@@ -19,6 +20,7 @@ function* initUser({ api }) {
       throw resp.error ? resp.error : new Error('user is unauthorized');
     }
 
+    yield put(connectWS());
     yield put({ type: INIT_SUCCESS, payload: resp.payload });
   } catch (e) {
     yield put({ type: INIT_FAILURE });
@@ -43,6 +45,7 @@ function* logout({ api }, { payload }) {
   try {
     yield call(api.auth.logout);
     yield put({ type: LOGOUT_SUCCESS });
+    yield put(disconnectWS());
     yield put(push('/'));
   } catch (e) {
     yield put({ type: LOGOUT_FAILURE, payload: e.message });

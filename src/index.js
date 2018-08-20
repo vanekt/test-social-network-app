@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import sagas from './sagas';
 import { initUserRequest } from './actions/user';
+import { initWS } from './actions/websocket';
 
 import AuthApi from './api/auth';
 import ProfileApi from './api/profile';
@@ -40,3 +41,5 @@ render(
 );
 
 registerServiceWorker();
+
+store.dispatch(initWS("ws://localhost:8082/ws")); // TODO use env

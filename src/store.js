@@ -3,10 +3,11 @@ import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import reducers from './reducers';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import webSocket from './middleware/websocket';
 
 const sagaMiddleware = createSagaMiddleware();
 
-let optionalMiddlewares = [];
+let optionalMiddlewares = [webSocket];
 if (process.env.NODE_ENV === 'development') {
   const logger = createLogger({ collapsed: true, diff: true });
   optionalMiddlewares.push(logger);

@@ -5,8 +5,10 @@ import {
   FETCH_DIALOGS_FAILURE,
   FETCH_DIALOG_MESSAGES_REQUEST,
   FETCH_DIALOG_MESSAGES_SUCCESS,
-  FETCH_DIALOG_MESSAGES_FAILURE
+  FETCH_DIALOG_MESSAGES_FAILURE,
+  SEND_MESSAGE_REQUEST
 } from '../constants/messages';
+import { sendWS } from '../actions/websocket'
 
 function* fetchDialogs({ api }, { payload }) {
   try {
@@ -44,7 +46,19 @@ function* fetchDialogMessages({ api }, { payload }) {
   }
 }
 
+function* sendMessage({ api }, { payload }) {
+  try {
+    yield put(sendWS(payload));
+
+  } catch (e) {
+    console.log('SEND_MESSAGE_FAILURE', e);
+    // TODO
+    // yield put({ type: SEND_MESSAGE_FAILURE });
+  }
+}
+
 export default function*(ea) {
   yield takeLatest(FETCH_DIALOGS_REQUEST, fetchDialogs, ea);
   yield takeLatest(FETCH_DIALOG_MESSAGES_REQUEST, fetchDialogMessages, ea);
+  yield takeLatest(SEND_MESSAGE_REQUEST, sendMessage, ea);
 }
