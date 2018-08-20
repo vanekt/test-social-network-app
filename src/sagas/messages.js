@@ -8,7 +8,7 @@ import {
   FETCH_DIALOG_MESSAGES_FAILURE,
   SEND_MESSAGE_REQUEST
 } from '../constants/messages';
-import { sendWS } from '../actions/websocket'
+import { sendWS } from '../actions/websocket';
 
 function* fetchDialogs({ api }, { payload }) {
   try {
@@ -49,7 +49,6 @@ function* fetchDialogMessages({ api }, { payload }) {
 function* sendMessage({ api }, { payload }) {
   try {
     yield put(sendWS(payload));
-
   } catch (e) {
     console.log('SEND_MESSAGE_FAILURE', e);
     // TODO

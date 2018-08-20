@@ -1,4 +1,4 @@
-import { WS_INIT, WS_CONNECT, WS_DISCONNECT, WS_SEND } from '../constants/websocket'
+import { WS_INIT, WS_CONNECT, WS_DISCONNECT, WS_SEND, WS_ONMESSAGE } from '../constants/websocket';
 
 let ws = null;
 let addr = null;
@@ -13,7 +13,7 @@ export default store => next => action => {
       // TODO
       // ws.onopen = () => store.dispatch({ type: 'WEBSOCKET:OPEN' });
       // ws.onclose = (event) => store.dispatch({ type: 'WEBSOCKET:CLOSE', payload: event });
-      // ws.onmessage = (event) => store.dispatch({ type: 'WEBSOCKET:MESSAGE', payload: event });
+      ws.onmessage = e => store.dispatch({ type: WS_ONMESSAGE, payload: e });
       break;
 
     case WS_SEND:

@@ -11,7 +11,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE
 } from '../constants/user';
-import { connectWS, disconnectWS } from "../actions/websocket";
+import { connectWS, disconnectWS } from '../actions/websocket';
 
 function* initUser({ api }) {
   try {

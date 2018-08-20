@@ -42,4 +42,4 @@ render(
 
 registerServiceWorker();
 
-store.dispatch(initWS("ws://localhost:8082/ws")); // TODO use env
+store.dispatch(initWS('ws://localhost:8082/ws')); // TODO use env

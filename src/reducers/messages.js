@@ -4,7 +4,9 @@ import {
   FETCH_DIALOGS_FAILURE,
   FETCH_DIALOG_MESSAGES_REQUEST,
   FETCH_DIALOG_MESSAGES_SUCCESS,
-  FETCH_DIALOG_MESSAGES_FAILURE
+  FETCH_DIALOG_MESSAGES_FAILURE,
+  SEND_MESSAGE_SUCCESS,
+  NEW_MESSAGE_RECEIVED
 } from '../constants/messages';
 
 const initialState = {
@@ -51,7 +53,7 @@ export default function reducer(state = initialState, action) {
     case FETCH_DIALOG_MESSAGES_SUCCESS:
       return {
         ...state,
-        messages: action.payload.messages,
+        messages: action.payload.messages || [],
         messagesListError: '',
         peerUserData: action.payload.peerUserData,
         isLoadMessages: false
@@ -62,6 +64,18 @@ export default function reducer(state = initialState, action) {
         ...state,
         messagesListError: 'Cannot fetch message list', // TODO:
         isLoadMessages: false
+      };
+
+    case SEND_MESSAGE_SUCCESS:
+      return {
+        ...state,
+        messages: [...state.messages, action.payload]
+      };
+
+    case NEW_MESSAGE_RECEIVED:
+      return {
+        ...state,
+        messages: [...state.messages, action.payload]
       };
 
     default:

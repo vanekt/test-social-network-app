@@ -1,8 +1,4 @@
-import {
-  WS_CONNECT,
-  WS_SEND,
-  WS_DISCONNECT, WS_INIT
-} from '../constants/websocket';
+import { WS_CONNECT, WS_SEND, WS_DISCONNECT, WS_INIT } from '../constants/websocket';
 
 export const initWS = url => ({
   type: WS_INIT,
