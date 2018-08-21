@@ -8,6 +8,7 @@ export default store => next => action => {
       addr = action.payload;
       break;
     case WS_CONNECT:
+      // TODO reconnect after disconnect
       ws = new WebSocket(addr);
 
       // TODO
