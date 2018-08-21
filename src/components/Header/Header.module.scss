@@ -1,0 +1,40 @@
+.header {
+  height: 42px;
+  width: 100%;
+  background-color: #4a76a8;
+}
+
+.content {
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #fff;
+  font-weight: 700;
+}
+
+.userArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.userName {
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 7px 10px;
+}

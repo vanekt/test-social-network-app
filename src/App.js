@@ -3,10 +3,11 @@ import { Route, Switch } from 'react-router';
 import CheckAuth from './components/CheckAuth';
 import Header from './components/Header';
 import Main from './components/Main';
+import Navigation from './components/Navigation';
 import Profile from './components/Profile';
 import Messages from './components/Messages';
 import PageNotFound from './components/PageNotFound';
-import './App.scss';
+import style from './App.module.scss';
 
 const MainSecure = CheckAuth(Main);
 const MessagesSecure = CheckAuth(Messages);
@@ -14,15 +15,20 @@ const MessagesSecure = CheckAuth(Messages);
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Route path="/" component={Header} />
-        <Switch>
-          <Route path="/" exact component={MainSecure} />
-          <Route path="/profile/" exact component={MainSecure} />
-          <Route path="/profile/:userId" component={Profile} />
-          <Route path="/messages/:peerId?" component={MessagesSecure} />
-          <Route component={PageNotFound} />
-        </Switch>
+        <div className={style.layout}>
+          <Navigation />
+          <div className={style.content}>
+            <Switch>
+              <Route path="/" exact component={MainSecure} />
+              <Route path="/profile/" exact component={MainSecure} />
+              <Route path="/profile/:userId" component={Profile} />
+              <Route path="/messages/:peerId?" component={MessagesSecure} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </div>
+        </div>
       </div>
     );
   }
