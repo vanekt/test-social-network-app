@@ -1,0 +1,60 @@
+.checkAuth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.form {
+  display: inline-block;
+  width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+
+  label {
+    font-size: 12px;
+    color: #666;
+  }
+
+  input {
+    color: #000;
+    margin: 5px 0 15px 0;
+    border: 1px solid #d3d9de;
+    font-size: 14px;
+    padding: 6px 12px 8px;
+    box-sizing: border-box;
+    height: 35px;
+    border-radius: 3px;
+    width: 100%;
+  }
+
+  button {
+    padding: 7px 16px 8px;
+    margin: 0;
+    font-size: 12.5px;
+    display: inline-block;
+    zoom: 1;
+    cursor: pointer;
+    white-space: nowrap;
+    outline: none;
+    vertical-align: top;
+    line-height: 15px;
+    text-align: center;
+    text-decoration: none;
+    background: none;
+    background-color: rgba(0, 0, 0, 0);
+    background-color: #5181b8;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+}
+
+.error {
+  font-size: 12px;
+  color: #ff5757;
+  font-weight: 500;
+}

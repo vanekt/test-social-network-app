@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withState, withHandlers } from 'recompose';
 import { loginRequest } from '../../actions/user';
+import styles from './CheckAuth.module.scss';
 
 const mapStateToProps = store => ({
   isInit: store.user.isInit,
@@ -31,25 +32,32 @@ export default Component => {
 
     if (userId === null) {
       return (
-        <div className="CheckAuth">
-          <h1>Войдите, чтобы продолжить</h1>
-          <form onSubmit={submitLoginForm}>
-            <input
-              autoFocus
-              type="text"
-              onChange={e => {
-                updateUsername(e.target.value);
-              }}
-            />
-            <input
-              type="password"
-              onChange={e => {
-                updatePassword(e.target.value);
-              }}
-            />
-            <button type="submit">LOGIN</button>
+        <div className={styles.checkAuth}>
+          <form onSubmit={submitLoginForm} className={styles.form}>
+            <label>
+              Login
+              <input
+                autoFocus
+                type="text"
+                onChange={e => {
+                  updateUsername(e.target.value);
+                }}
+              />
+            </label>
+            <label>
+              Password
+              <input
+                type="password"
+                onChange={e => {
+                  updatePassword(e.target.value);
+                }}
+              />
+            </label>
+
+            <p className={styles.error}>{loginFormError}</p>
+
+            <button type="submit">Log in</button>
           </form>
-          <p>{loginFormError}</p>
         </div>
       );
     }
