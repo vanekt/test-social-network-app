@@ -17,6 +17,7 @@
 .title {
   color: #fff;
   font-weight: 700;
+  padding-left: 15px;
 }
 
 .userArea {
@@ -37,4 +38,15 @@
   height: 30px;
   border-radius: 50%;
   margin: 7px 10px;
+}
+
+.exit {
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 700;
+
+  &:hover {
+    color: #ddd;
+  }
 }

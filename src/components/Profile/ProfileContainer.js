@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import { fetchProfileUser } from '../../actions/profile';
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  username: state.profile.username,
+  image: state.profile.image,
+  userId: state.profile.id,
+  isLoading: state.profile.isLoading,
+  error: state.profile.error
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {

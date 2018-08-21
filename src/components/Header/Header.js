@@ -8,9 +8,9 @@ export default ({ avatar, userId, username, logout }) => {
     <div className={styles.userArea}>
       <span className={styles.userName}>{username}</span>
       <img className={styles.avatar} src={userAvatar} title={username} alt={username} />
-      <button type="button" onClick={logout}>
+      <span className={styles.exit} onClick={logout}>
         Exit
-      </button>
+      </span>
     </div>
   ) : null;
 
