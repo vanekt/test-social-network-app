@@ -3,6 +3,7 @@ import { lifecycle } from 'recompose';
 import { NavLink } from 'react-router-dom';
 import Message from '../Message';
 import MessageForm from '../MessageForm';
+import styles from './Dialog.module.scss';
 
 const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
   const messagesList = isLoadMessages ? (
@@ -15,7 +16,7 @@ const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
   );
 
   return (
-    <div>
+    <div className={styles.dialog}>
       <NavLink to="/messages">Back</NavLink>
       <p>{messagesListError}</p>
       {messagesList}
