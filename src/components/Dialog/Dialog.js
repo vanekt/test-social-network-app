@@ -6,20 +6,31 @@ import MessageForm from '../MessageForm';
 import styles from './Dialog.module.scss';
 
 const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
-  const messagesList = isLoadMessages ? (
+  const messagesList =
+    messages &&
+    messages.map((message, index, array) => {
+      let onlyMessage = false;
+      if (index > 0) {
+        onlyMessage = message.authorId === array[index - 1].authorId;
+      }
+      return <Message key={message.id} data={message} onlyMessage={onlyMessage} />;
+    });
+  const content = isLoadMessages ? (
     'Loading...'
   ) : (
     <div>
-      {messages && messages.map(message => <Message key={message.id} data={message} />)}
+      <div className={styles.messageList}>{messagesList}</div>
       <MessageForm />
     </div>
   );
 
   return (
     <div className={styles.dialog}>
-      <NavLink to="/messages">Back</NavLink>
+      <NavLink className={styles.back} to="/messages">
+        Back
+      </NavLink>
       <p>{messagesListError}</p>
-      {messagesList}
+      {content}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import Message from './Message';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 const mapStateToProps = (state, ownProps) => {
   const currentUserId = state.user.id;
@@ -9,10 +10,13 @@ const mapStateToProps = (state, ownProps) => {
   const authorImage =
     currentUserId === authorId ? state.user.image : state.messages.peerUserData.image;
 
+  const dt = moment(ownProps.data.datetime * 1000);
   return {
     userId: currentUserId,
+    authorId,
     authorName,
-    authorImage
+    authorImage,
+    datetime: dt.toNow()
   };
 };
 

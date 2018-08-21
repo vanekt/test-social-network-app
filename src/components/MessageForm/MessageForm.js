@@ -1,8 +1,9 @@
 import React from 'react';
 import { compose, withState, withHandlers } from 'recompose';
+import styles from './MessageForm.module.scss';
 
 const MessageForm = ({ messageText, updateMessageText, sendMessageAndClean }) => (
-  <div>
+  <div className={styles.form}>
     <textarea
       autoFocus
       value={messageText}
