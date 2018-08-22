@@ -46,9 +46,11 @@ export default lifecycle({
     fetchFriends(userId);
   },
   componentWillReceiveProps(nextProps) {
-    const { fetchProfileUser, fetchFriends } = this.props;
-    const userId = nextProps.match.params.userId;
-    fetchProfileUser(userId);
-    fetchFriends(userId);
+    const { userId, fetchProfileUser, fetchFriends } = this.props;
+    const newUserId = nextProps.match.params.userId;
+    if (userId !== parseInt(newUserId, 10)) {
+      fetchProfileUser(newUserId);
+      fetchFriends(newUserId);
+    }
   }
 })(Profile);
