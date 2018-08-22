@@ -1,11 +1,11 @@
 import React from 'react';
-import { lifecycle } from 'recompose';
+import { compose, lifecycle, withHandlers } from 'recompose';
 import { NavLink } from 'react-router-dom';
 import Message from '../Message';
 import MessageForm from '../MessageForm';
 import styles from './Dialog.module.scss';
 
-const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
+const Dialog = ({ isLoadMessages, messages, messagesListError, registerChild }) => {
   const messagesList =
     messages &&
     messages.map((message, index, array) => {
@@ -19,7 +19,9 @@ const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
     'Loading...'
   ) : (
     <div>
-      <div className={styles.messageList}>{messagesList}</div>
+      <div ref={registerChild} className={styles.messageList}>
+        {messagesList}
+      </div>
       <MessageForm />
     </div>
   );
@@ -35,9 +37,35 @@ const Dialog = ({ isLoadMessages, messages, messagesListError }) => {
   );
 };
 
-export default lifecycle({
-  componentDidMount() {
-    const { peerId, userId, fetchDialogMessages } = this.props;
-    fetchDialogMessages(userId, peerId);
-  }
-})(Dialog);
+const enhance = compose(
+  withHandlers(() => {
+    let ref_;
+    return {
+      registerChild: () => ref => {
+        ref_ = ref;
+      },
+      scrollToBottom: () => () => {
+        if (ref_) {
+          ref_.scrollTop = ref_.scrollHeight;
+        }
+      }
+    };
+  }),
+  lifecycle({
+    componentDidMount() {
+      const { peerId, userId, fetchDialogMessages } = this.props;
+      fetchDialogMessages(userId, peerId);
+    },
+    componentWillReceiveProps(nextProps) {
+      // TODO don't scroll to bottom if already scrolled top
+      const { messages, scrollToBottom } = this.props;
+      if (messages.length !== nextProps.messages.length) {
+        setTimeout(() => {
+          scrollToBottom();
+        }, 0);
+      }
+    }
+  })
+);
+
+export default enhance(Dialog);

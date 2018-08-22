@@ -16,6 +16,10 @@
   margin-right: 15px;
 }
 
+.avatarLink {
+  outline: none;
+}
+
 .avatarHidden {
   visibility: hidden;
   height: 0;
@@ -43,4 +47,5 @@
 
 .text {
   margin-top: 5px;
+  font-size: 13px;
 }
