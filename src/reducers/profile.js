@@ -1,11 +1,16 @@
-import { FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from '../constants/profile';
+import {
+  FETCH_USER_SUCCESS,
+  FETCH_USER_FAILURE,
+  FETCH_FRIENDS_SUCCESS
+} from '../constants/profile';
 
 const initialState = {
   username: '',
   image: null,
   id: null,
   isLoading: true,
-  error: ''
+  error: '',
+  friends: []
 };
 
 Object.freeze(initialState);
@@ -24,9 +29,15 @@ export default function reducer(state = initialState, action) {
 
     case FETCH_USER_FAILURE:
       return {
-        ...initialState,
+        ...state,
         isLoading: false,
         error: 'Failed to load user profile' // TODO
+      };
+
+    case FETCH_FRIENDS_SUCCESS:
+      return {
+        ...state,
+        friends: action.payload
       };
 
     default:

@@ -10,4 +10,10 @@ export default class {
       .then(toJson)
       .catch(errorToTransport);
   };
+
+  getAll = () => {
+    return fetch(this.url + '/users', getOptions)
+      .then(toJson)
+      .catch(errorToTransport);
+  };
 }
