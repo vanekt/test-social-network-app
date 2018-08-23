@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import './index.scss';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
@@ -40,6 +40,6 @@ render(
   document.getElementById('root')
 );
 
-registerServiceWorker();
+//registerServiceWorker();
 
 store.dispatch(initWS('ws://localhost:8082/ws')); // TODO use env
